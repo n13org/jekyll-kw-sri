@@ -1,0 +1,14 @@
+# gems
+*.gem
+/Gemfile.lock
+*.gemfile.lock
+/gems/
+
+# tests / test coverage
+/coverage
+
+# bundler
+/.bundle/
+/vendor/bundle/
+
+# Unsorted
