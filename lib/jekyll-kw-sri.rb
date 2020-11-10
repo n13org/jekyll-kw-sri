@@ -33,17 +33,16 @@ module Jekyll
         cache_compiled_scss(@file, context, lambda {
           site = context.registers[:site]
 
-          converter = if defined? site.find_converter_instance
-                        site.find_converter_instance(Jekyll::Converters::Scss)
-                      else
-                        site.getConverterImpl(::Jekyll::Converters::Scss)
-                      end
+          converter = site.find_converter_instance(Jekyll::Converters::Scss)
+          # converter = if defined? site.find_converter_instance
+          #               site.find_converter_instance(Jekyll::Converters::Scss)
+          #             else
+          #               site.getConverterImpl(::Jekyll::Converters::Scss)
+          #             end
 
-          # converter = site.find_converter_instance(Jekyll::Converters::Scss)
           result = super(context)
           scss = result.gsub(/^---.*---/m, '')
           data = converter.convert(scss)
-          # converter.sass_style()
 
           ## Debuging
           # File.open("." + @scss_file + ".tmp", 'w') { |file| file.write(data) }

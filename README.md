@@ -9,17 +9,17 @@ Add `kw-sri` section to `_config.yml` configure the plugin globally.
 ```yaml
 kw-sri:
   createTmpfile: false
-  hashType: 'sha384'
-  writeSourceMappingURL: true
+  hash_type: 'sha384'
+  write_source_mapping_url: true
 ```
 
  Configuration values
 
-| Key                   | Description                                       | Values (**default**)                     |
-|-----------------------|---------------------------------------------------|----------------------------|
-| createTmpfile         | Debug-Only, save the rendered sass or scss as css | **false**, true            |
-| hashType              | Which kind of integrity hash                      | sha256, **sha384**, sha512 |
-| writeSourceMappingURL | Add the map-file like to the css                  | false, **true**            |                  
+| Key                      | Description                                       | Values (**default**)       |
+|--------------------------|---------------------------------------------------|----------------------------|
+| createTmpfile            | Debug-Only, save the rendered sass or scss as css | **false**, true            |
+| hash_type                | Which kind of integrity hash                      | sha256, **sha384**, sha512 |
+| write_source_mapping_url | Add the map-file like to the css                  | false, **true**            |              
 
 Add `sri: true` to **Front Matter** of  `<page>` or `<post>` to activate the sri plugin.
 

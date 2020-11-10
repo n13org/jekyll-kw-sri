@@ -1,9 +1,11 @@
-require "bundler/gem_tasks"
+# frozen_string_literal: true
 
-task :default => [:test]
+require 'bundler/gem_tasks'
+
+task default: [:test]
 
 def name
-  "jekyll-kw-sri"
+  'jekyll-kw-sri'
 end
 
 def version
