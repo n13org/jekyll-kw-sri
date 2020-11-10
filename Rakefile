@@ -12,15 +12,16 @@ end
 
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
+  # test.name = "Run test with rake"
   test.libs << 'lib' << 'test'
   test.pattern = 'test/**/test_*.rb'
   test.verbose = true
 end
 
-require "rdoc/task"
+require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
-  rdoc.rdoc_dir = "rdoc"
+  rdoc.rdoc_dir = 'rdoc'
   rdoc.title = "#{name} #{version}"
-  rdoc.rdoc_files.include("README*")
-  rdoc.rdoc_files.include("lib/**/*.rb")
+  rdoc.rdoc_files.include('README*')
+  rdoc.rdoc_files.include('lib/**/*.rb')
 end
