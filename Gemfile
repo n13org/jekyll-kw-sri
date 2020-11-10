@@ -13,3 +13,5 @@ gem "simplecov", "~> 0.19.1"
 gem "minitest", "~> 5.14"
 gem "minitest-reporters", "~> 1.4"
 
+
+gem "appraisal", "~>2.3.0"

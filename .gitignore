@@ -11,6 +11,8 @@
 # bundler
 /.bundle/
 /vendor/bundle/
+/gemfiles/.bundle/
+/gemfiles/vendor/bundle/
 
 # rdoc - documenation output folder
 /rdoc/
