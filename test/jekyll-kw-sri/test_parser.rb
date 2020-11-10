@@ -62,25 +62,25 @@ module Jekyll
         def test_add_source_mapping_url_default
           parser = Jekyll::KargWare::Integrity::Parser.new
 
-          assert_equal("\n/*# sourceMappingURL=dummy.css.map */", parser.add_sourceMappingURL('dummy.scss'))
+          assert_equal("XYZ\n/*# sourceMappingURL=dummy.css.map */", parser.add_source_mapping_url('dummy.scss', 'XYZ'))
         end
 
         def test_add_source_mapping_url_true
           parser = Jekyll::KargWare::Integrity::Parser.new({ 'writeSourceMappingURL' => true })
 
-          assert_equal("\n/*# sourceMappingURL=dummy.css.map */", parser.add_sourceMappingURL('dummy.scss'))
+          assert_equal("XYZ\n/*# sourceMappingURL=dummy.css.map */", parser.add_source_mapping_url('dummy.scss', 'XYZ'))
         end
 
         def test_add_source_mapping_url_false
           parser = Jekyll::KargWare::Integrity::Parser.new({ 'writeSourceMappingURL' => false })
 
-          assert_equal('', parser.add_sourceMappingURL('dummy.scss'))
+          assert_equal('XYZ', parser.add_source_mapping_url('dummy.scss', 'XYZ'))
         end
 
         def test_invalid_hashtype
           parser = Jekyll::KargWare::Integrity::Parser.new({ 'hashType' => 'shaFooBar' })
 
-          assert_raises(Gem::InvalidHashTypeException) { parser.calc_integrity('dummy.scss', 'dummy data') }
+          assert_raises(Jekyll::KargWare::Integrity::InvalidHashTypeException) { parser.calc_integrity('dummy.scss', 'dummy data') }
         end
 
         def test_nico
@@ -106,25 +106,25 @@ module Jekyll
         def test_default_hash
           parser = Jekyll::KargWare::Integrity::Parser.new
 
-          assert_equal('sha384-YwF8i7eIIqbRFIwUCIvgoJmyrZiwEvwVzpDc/vL6Tze1b58/EMsN8tjOCmg0wjGx', parser.calc_integrity('dummy.scss', 'Nicolas Karg'))
+          assert_equal('sha384-CAKQudMhH2dRDctuCuB04YZ7U2+ypwniuzywkMd0dRD4Jc1VRwYs/qtVgempt84u', parser.calc_integrity('dummy.scss', 'Nicolas Karg'))
         end
 
         def test_sha256_hash
           parser = Jekyll::KargWare::Integrity::Parser.new('hashType' => 'sha256')
 
-          assert_equal('sha256-Lg+i19cfzukJiCWooofLpwdXwI+UzxQlLI2Z1p6IRO4=', parser.calc_integrity('dummy.scss', 'Nicolas Karg'))
+          assert_equal('sha256-wL4u9IuX2Fd1BE7HRjxXaDROMcwqnKHjdvGln2LmWGE=', parser.calc_integrity('dummy.scss', 'Nicolas Karg'))
         end
 
         def test_sha384_hash
           parser = Jekyll::KargWare::Integrity::Parser.new('hashType' => 'sha384')
 
-          assert_equal('sha384-YwF8i7eIIqbRFIwUCIvgoJmyrZiwEvwVzpDc/vL6Tze1b58/EMsN8tjOCmg0wjGx', parser.calc_integrity('dummy.scss', 'Nicolas Karg'))
+          assert_equal('sha384-CAKQudMhH2dRDctuCuB04YZ7U2+ypwniuzywkMd0dRD4Jc1VRwYs/qtVgempt84u', parser.calc_integrity('dummy.scss', 'Nicolas Karg'))
         end
 
         def test_sha512_hash
           parser = Jekyll::KargWare::Integrity::Parser.new('hashType' => 'sha512')
 
-          assert_equal('sha512-XGwsOT6P5EhOPmm0pGoARSpmSepSDWs15zI5bBL1HOOebsebigt61f2YrlP5xAdFELuIXgN85m7FUunFYuYwCw==', parser.calc_integrity('dummy.scss', 'Nicolas Karg'))
+          assert_equal('sha512-Tqwtzv86jf17eulxL2QQ0td1imrXRk8/G2Wojy/slX2Od2p5MBB0u8xzk0UroNEzjI7s76z0eGLZuwOJCoBU6Q==', parser.calc_integrity('dummy.scss', 'Nicolas Karg'))
         end
       end
     end

@@ -12,12 +12,10 @@ module Jekyll
       def initialize(tag_name, input, tokens)
         super
 
-        if input.length <= 0
-          raise 'Please enter a file path'
-        else
-          @scss_file = strip_or_self(input)
-          # File.exists? is file?
-        end
+        raise 'Please enter a file path' if input.length <= 0
+
+        @scss_file = strip_or_self(input)
+        # File.exists? is file?
 
         @tag_name = tag_name
       end
@@ -55,11 +53,18 @@ module Jekyll
       end
 
       def cache_compiled_scss(path, _context, compute)
-        @@cached_scss ||= {}
-        if @@cached_scss.key?(path)
-          @@cached_scss[path]
+        # @@cached_scss ||= {}
+        # if @@cached_scss.key?(path)
+        #   @@cached_scss[path]
+        # else
+        #   @@cached_scss[path] = compute.call
+        # end
+
+        @cached_scss ||= {}
+        if @cached_scss.key?(path)
+          @cached_scss[path]
         else
-          @@cached_scss[path] = compute.call
+          @cached_scss[path] = compute.call
         end
       end
 

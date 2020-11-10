@@ -7,7 +7,7 @@ module Jekyll
     module Integrity
       # jekyll-kw-sri parser class
       class Parser
-        attr_accessor :configuration
+        attr_reader :configuration
 
         def initialize(options = {})
           @configuration = Configuration.new(options)
@@ -16,33 +16,33 @@ module Jekyll
         def calc_integrity(filename, data)
           hash_type = @configuration.hash_type
 
-          data = add_source_mapping_url(filename)
+          data_modified = add_source_mapping_url(filename, data)
 
           case hash_type
           when 'sha256'
-            "sha256-#{Digest::SHA256.base64digest data}"
+            "sha256-#{Digest::SHA256.base64digest data_modified}"
           when 'sha384'
-            "sha384-#{Digest::SHA384.base64digest data}"
+            "sha384-#{Digest::SHA384.base64digest data_modified}"
           when 'sha512'
-            "sha512-#{Digest::SHA512.base64digest data}"
+            "sha512-#{Digest::SHA512.base64digest data_modified}"
           else
-            raise Gem::InvalidHashTypeException, "The type of the hash '#{hash_type}' is invalid!'"
+            raise Jekyll::KargWare::Integrity::InvalidHashTypeException, "The type of the hash '#{hash_type}' is invalid!'"
           end
         end
 
-        def add_source_mapping_url(filename)
+        def add_source_mapping_url(filename, data)
           if @configuration.write_source_mapping_url
             base = File.basename(filename)
             base = base.sub! 'scss', 'css'
 
-            "\n/*# sourceMappingURL=#{base}.map */"
+            data + "\n/*# sourceMappingURL=#{base}.map */"
           else
-            ''
+            data
           end
         end
       end
 
-      class Gem::InvalidHashTypeException < Gem::Exception
+      class InvalidHashTypeException < Gem::Exception
       end
     end
   end

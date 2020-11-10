@@ -32,15 +32,15 @@ module Jekyll
           assert_equal configuration.create_tmpfile, false
         end
 
-        def test_custom_hash_type_change_source_mapping_url
+        def hash_type
           configuration = Jekyll::KargWare::Integrity::Configuration.new({ 'hashType' => 'bar', 'writeSourceMappingURL' => false })
 
-          assert_equal configuration.hashType, 'bar'
+          assert_equal configuration.hash_type, 'bar'
           assert_equal configuration.write_source_mapping_url, false
           assert_equal configuration.create_tmpfile, false
         end
 
-        def test_custom_hash_type_change_source_mapping_url_change_create_tmpfile
+        def hash_type_change_create_tmpfile
           configuration = Jekyll::KargWare::Integrity::Configuration.new({ 'hashType' => 'foo bar', 'writeSourceMappingURL' => false, 'createTmpfile' => true })
 
           assert_equal configuration.hash_type, 'foo bar'
