@@ -115,6 +115,12 @@ module Jekyll
           assert_equal('sha256-wL4u9IuX2Fd1BE7HRjxXaDROMcwqnKHjdvGln2LmWGE=', parser.calc_integrity('dummy.scss', 'Nicolas Karg'))
         end
 
+        def test_sha256_hash_no_map
+          parser = Jekyll::KargWare::Integrity::Parser.new('hashType' => 'sha256', 'writeSourceMappingURL' => false)
+
+          assert_equal('sha256-RpSGJ/7qKTsHq3mtAO8hMgmu8Wek/BTBP94eKn0wmXM=', parser.calc_integrity('dummy.scss', 'Nicolas Karg'))
+        end
+
         def test_sha384_hash
           parser = Jekyll::KargWare::Integrity::Parser.new('hashType' => 'sha384')
 
