@@ -11,4 +11,7 @@
 /.bundle/
 /vendor/bundle/
 
+# rdoc - documenation output folder
+/rdoc/
+
 # Unsorted
