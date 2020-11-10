@@ -5,6 +5,7 @@
 /gems/
 
 # tests / test coverage
+.jekyll-cache/
 /coverage
 /test/**/source/.jekyll-cache/
 
