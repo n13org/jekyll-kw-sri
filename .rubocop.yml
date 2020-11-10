@@ -10,11 +10,7 @@ AllCops:
     - gemfiles/vendor/bundle/**/*
     - Rakefile
     - Gemfile
-    - test/jekyll/**/*
-    - test/jekyll/helper.rb
-    - test/jekyll/simplecov_custom_profile.rb
-    - test/jekyll/test_saas.rb
-    - test/test_files.rb
+    - testbroken/**/*
   NewCops: enable
 
 Layout/EndOfLine:
