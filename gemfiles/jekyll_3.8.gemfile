@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 gem "rake", "~> 13.0"
-gem "simplecov", "~> 0.19.1"
+gem "simplecov"
 gem "minitest", "~> 5.14"
 gem "minitest-reporters", "~> 1.4"
 gem "minitest-profile", "~> 0.0.2"
