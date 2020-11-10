@@ -5,6 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'version'
 
 # https://medium.com/@paulfarino/wrap-your-assets-in-a-gem-3ad7ecf5b075
+# https://lokalise.com/blog/create-a-ruby-gem-basics/
 
 Gem::Specification.new do |spec|
   spec.name          = 'jekyll-kw-sri'
@@ -18,14 +19,18 @@ Gem::Specification.new do |spec|
 
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
 
+  spec.files         = Dir[
+                        'README.md', 'LICENSE', 'CHANGELOG.md',
+                        'lib/**/*.rb'
+                       ]
   # spec.files         = `git ls-files -z`.split("\x0")
-  # Copied from https://github.com/pages-themes/minimal/blob/master/jekyll-theme-minimal.gemspec
-  spec.files         = `git ls-files -z`.split("\x0").select do |f|
-    f.match(%r{^((_includes|_layouts|_sass|assets)/|(LICENSE|README)((\.(txt|md|markdown)|$)))}i)
-  end
+  ## Copied from https://github.com/pages-themes/minimal/blob/master/jekyll-theme-minimal.gemspec
+  # spec.files         = `git ls-files -z`.split("\x0").select do |f|
+  #   f.match(%r{^((_includes|_layouts|_sass|assets)/|(LICENSE|README)((\.(txt|md|markdown)|$)))}i)
+  # end
   spec.require_paths = ['lib']
 
-  spec.required_ruby_version = '>= 2.4'
+  spec.required_ruby_version = '>= 2.7'
 
   spec.add_dependency 'jekyll', '>= 4.0'
 
