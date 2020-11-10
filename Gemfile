@@ -8,6 +8,10 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 gem "rake", "~> 13.0"
 
+gem "rubocop-minitest"
+gem "rubocop-performance"
+gem "rubocop"
+
 gem "simplecov"
 
 gem "minitest", "~> 5.14"
