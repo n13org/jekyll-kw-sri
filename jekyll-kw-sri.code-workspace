@@ -4,5 +4,27 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"extensions": {
+		"recommendations": [
+			"esbenp.prettier-vscode",
+			"rebornix.ruby"
+		]
+	},
+	"settings": {
+		"ruby.format": "rubocop",
+		"ruby.intellisense": "rubyLocate",
+		"ruby.useBundler": true,
+		"ruby.lint": {
+		  "rubocop": {
+			"useBundler": true
+		  }
+		},		
+		"[ruby]": {
+			"editor.tabSize": 2,
+			"editor.insertSpaces": true,
+			"editor.formatOnSave": true,
+			"editor.autoIndent": "full",
+			"files.trimTrailingWhitespace": true
+		}		
+	}
 }

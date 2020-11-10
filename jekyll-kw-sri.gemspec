@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'version'
-
 
 # https://medium.com/@paulfarino/wrap-your-assets-in-a-gem-3ad7ecf5b075
 
@@ -16,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.email         = 'rubygems.org@n13.org'
   spec.homepage      = 'https://github.com/n13org/jekyll-kw-sri'
   spec.license       = 'MIT'
-  
+
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
 
   # spec.files         = `git ls-files -z`.split("\x0")
@@ -32,5 +31,5 @@ Gem::Specification.new do |spec|
 
   # spec.add_development_dependency "rake", "~> 13.0"
   # spec.add_development_dependency "minitest", "~> 5.14"
-  # spec.add_development_dependency "appraisal", "~>2.3.0"  
+  # spec.add_development_dependency "appraisal", "~>2.3.0"
 end

@@ -1,5 +1,5 @@
 AllCops:
-  TargetRubyVersion: 2.7
+  TargetRubyVersion: 2.4
   Exclude:
     - _site/**/*
     - "*.gemspec"
@@ -10,6 +10,11 @@ AllCops:
     - gemfiles/vendor/bundle/**/*
     - Rakefile
     - Gemfile
+    - test/jekyll/**/*
+    - test/jekyll/helper.rb
+    - test/jekyll/simplecov_custom_profile.rb
+    - test/jekyll/test_saas.rb
+    - test/test_files.rb
   NewCops: enable
 
 Layout/EndOfLine:
