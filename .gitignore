@@ -6,6 +6,7 @@
 
 # tests / test coverage
 /coverage
+/test/**/source/.jekyll-cache/
 
 # bundler
 /.bundle/
