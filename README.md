@@ -44,6 +44,10 @@ bundle exec rake test
 bundle exec appraisal generate
 ```
 
+## Notes / Hints
+
+Use `Jekyll::Tags::IncludeRelativeTag` instead of `Liquid::Tag` as base class of the custom jekyll tag `SriScssHashTag` will help to read the content of the scss or sass files.
+
 ## Setup Steps
 
 ```sh

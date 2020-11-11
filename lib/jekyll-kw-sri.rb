@@ -7,8 +7,9 @@ require 'jekyll'
 
 module Jekyll
   module KargWare
-    # class SriScssHashTag < Jekyll::Tags::IncludeRelativeTag
-    class SriScssHashTag < Liquid::Tag
+    # jekyll-kw-sri custom tag
+    class SriScssHashTag < Jekyll::Tags::IncludeRelativeTag
+      # class SriScssHashTag < Liquid::Tag
       def initialize(tag_name, input, tokens)
         super
 
