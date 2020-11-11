@@ -8,6 +8,8 @@
 .jekyll-cache/
 /coverage
 /test/**/source/.jekyll-cache/
+/test/assets/**/*.sass.tmp
+/test/assets/**/*.scss.tmp
 
 # bundler
 /.bundle/
