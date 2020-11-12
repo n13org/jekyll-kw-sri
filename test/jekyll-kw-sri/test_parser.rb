@@ -61,7 +61,7 @@ module Jekyll
         def test_default_hash_with_tmp_file
           parser = Jekyll::KargWare::Integrity::Parser.new('createTmpfile' => true)
 
-          assert_equal('sha384-NEbf2o7Y2GATnYHu1V66qX824UuFHjhs0KFcHJ0dhosIoYbSMjICUH/Fx4aCU7eW', parser.calc_integrity('/test/assets/css/test-generated.scss', 'Some CSS, SASS or SCSS data'))
+          assert_equal('sha384-NEbf2o7Y2GATnYHu1V66qX824UuFHjhs0KFcHJ0dhosIoYbSMjICUH/Fx4aCU7eW', parser.calc_integrity('./test/assets/css/test-generated.scss', 'Some CSS, SASS or SCSS data'))
 
           # Exits the temp file
           target_tmp_file = File.join(File.dirname(__FILE__), '..', 'assets', 'css', 'test-generated.scss.tmp')
