@@ -17,12 +17,7 @@ module Jekyll
         super
 
         raise 'Please enter a file path' if input.length <= 0
-
         # File.exists? is file?
-
-        @tag_name = tag_name
-
-        # puts syntax_example
       end
 
       # def syntax_example
@@ -41,9 +36,8 @@ module Jekyll
             @sri_config = context.registers[:site].config['kw-sri'] || {}
           end
 
-          converter = site.find_converter_instance(Jekyll::Converters::Scss)
-
           # Render the context with the base-class
+          converter = site.find_converter_instance(Jekyll::Converters::Scss)
           result = super(context) # super_render(context)
           scss = result.gsub(/^---.*---/m, '')
           data = converter.convert(scss)
@@ -52,6 +46,9 @@ module Jekyll
           file = render_variable(context) || @file
           validate_file_name(file)
           path = locate_include_file(context, file, site.safe)
+
+          # Use default config for kw-sri if it is nil
+          @sri_config ||= Jekyll::KargWare::Integrity::Configuration::DEFAULT_CONFIG
 
           Integrity::Parser.new(@sri_config).calc_integrity(path, data)
         })
