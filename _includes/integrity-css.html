@@ -1,0 +1,10 @@
+{% if navitem.folder %}
+{% elsif navitem.url %}
+{% endif %}
+
+<link href="/assets/css/{{ include.file }}" rel="stylesheet" integrity="sha384-{% include /integrity/{{ include.file }}.sha384 %}" crossorigin="anonymous">
+
+<!-- Ruby File.extname(".profile.sh")     #=> ".sh" -->
+
+<!-- SCSS, SRI plugin -->
+<!-- <link rel="stylesheet" href="{{ '/assets/css/kargware.css' | relative_url }}" integrity="{% sri_scss_hash /assets/css/kargware.scss %}" crossorigin="anonymous"> -->
