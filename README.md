@@ -1,6 +1,10 @@
 # jekyll-kw-sri
 
-A plugin for jekyll to calculate integrity hashes for CSS (even SCSS and SASS) and JS files
+A plugin for jekyll to calculate [Subresource Integrity][Wikipedia SRI] (SRI) hashes for CSS (even SCSS and SASS) and JS files during build time.
+
+> **Subresource Integrity** (SRI) is a security feature that enables browsers to verify that resources they fetch (for example, from a CDN) are delivered without unexpected manipulation. It works by allowing you to provide a cryptographic hash that a fetched resource must match.
+
+from [Mozilla docs][Mozilla Subresource Integrity]
 
 ## Configuration
 
@@ -46,6 +50,23 @@ bundle exec appraisal generate
 
 ## Notes / Hints
 
+### Site context is empty
+
+Inside the `render(context)` function of a `Liquid::Tag` there is a context object. With that context you can get the `site` object, anyhow when you want to cretae your temporry **site** and **context** you need a workaround.
+
+Normal way to get the site object from the render function of a custom tag
+
+```ruby
+site = context.registers[:site]
+```
+
+Create a temporary site and context of a **jekyll** environment
+
+```ruby
+site = Jekyll::Site.new(Jekyll::Configuration::DEFAULTS)
+context = Liquid::Context.new({}, {}, { site: site })
+```         
+
 ### Base class for custom tag
 Use `Jekyll::Tags::IncludeRelativeTag` instead of `Liquid::Tag` as base class of the custom jekyll tag `SriScssHashTag` will help to read the content of the scss or sass files.
 
@@ -69,6 +90,12 @@ converter = if defined? site.find_converter_instance
             end
 ```
 
+## SRI Integrity
+
+```shell
+openssl dgst -sha256 -binary ./style.css | openssl base64 -A
+```
+
 ## Setup Steps
 
 ```sh
@@ -83,3 +110,6 @@ bundle add rdiscount
 bundle add redcarpet
 bundle add shoulda
 ```
+
+[Wikipedia SRI]: https://en.wikipedia.org/wiki/Subresource_Integrity
+[Mozilla Subresource Integrity]: https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity
