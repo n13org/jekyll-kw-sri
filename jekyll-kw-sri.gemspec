@@ -21,7 +21,8 @@ Gem::Specification.new do |spec|
 
   spec.files         = Dir[
                         'README.md', 'LICENSE', 'CHANGELOG.md',
-                        'lib/**/*.rb'
+                        'lib/**/*.rb',
+                        '_includes/integrity-css.html', '_includes/integrity-js.html'
                        ]
   # spec.files         = `git ls-files -z`.split("\x0")
   ## Copied from https://github.com/pages-themes/minimal/blob/master/jekyll-theme-minimal.gemspec
