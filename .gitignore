@@ -4,6 +4,9 @@
 *.gemfile.lock
 /gems/
 
+# local gem package folder
+/pkg/
+
 # tests / test coverage
 .jekyll-cache/
 /coverage

@@ -8,6 +8,11 @@ A plugin for jekyll to calculate [Subresource Integrity][Wikipedia SRI] (SRI) ha
 
 from [Mozilla docs][Mozilla Subresource Integrity]
 
+## Changelog
+
+* 0.0.x Add the custom tag `{% sri_scss_hash %}`
+* 0.1.0 Add html iclude files to use them with  `{% include kw-integrity-css.html %}` or `{% include kw-integrity-js.html %}`
+
 ## Configuration
 
 Add `kw-sri` section to `_config.yml` configure the plugin globally. If you want to use defauls you can ommit the config-section.

@@ -1,0 +1,42 @@
+{% assign para_file = include.file | default: "main.scss" %}
+{% assign para_path = include.path | default: "assets/css/" %}
+{% assign para_hash = include.hash | default: "sha384" %}
+
+{% assign filename_no_path = para_file | split: "/" | last %}
+{% assign source_file = "/" | append: para_path | append: para_file %}
+{% assign source_file_ex = para_file | split: "." | last %}
+{% assign path_no_filename = para_file | remove: filename_no_path %}
+{% assign target_file_ex = para_file | replace: ".scss", ".css" %}
+{% assign target_file = para_path | append: target_file_ex %}
+{% assign integrity_file = "/integrity/" | append: para_file | append: "." | append: para_hash %}
+
+{% comment %}{% raw %}
+<!-- DEBUG BEGINN
+{{ para_file }}
+{{ para_path }}
+{{ para_hash }}
+{{ filename_no_path }}   
+{{ source_file }} 
+{{ source_file_ex }}    
+{{ path_no_filename }}
+{{ target_file }}
+{{ integrity_file }}
+DEBUG END -->
+{% endraw %}{% endcomment %}
+
+{% case source_file_ex %}
+  {% when "css" %}
+<link rel="stylesheet" href="{{ target_file }}" integrity="{{ para_hash }}-{% include {{ integrity_file }} %}" crossorigin="anonymous">
+  {% when "scss" %}
+<link rel="stylesheet" href="{{ target_file }}" integrity="{% sri_scss_hash {{ source_file }} %}" crossorigin="anonymous">
+  {% else %}
+<link rel="stylesheet" href="{{ target_file }}">
+{% endcase %}
+
+{% comment %}{% raw %}
+
+<!-- Trailing Slash Handling ? -->
+{% assign trainling_slash = para_path | slice: -1, 1 %}
+{% if trainling_slash = "/" %}
+
+{% endraw %}{% endcomment %}
