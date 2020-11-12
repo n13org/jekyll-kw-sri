@@ -46,7 +46,28 @@ bundle exec appraisal generate
 
 ## Notes / Hints
 
+### Base class for custom tag
 Use `Jekyll::Tags::IncludeRelativeTag` instead of `Liquid::Tag` as base class of the custom jekyll tag `SriScssHashTag` will help to read the content of the scss or sass files.
+
+### Find Scss converter
+
+Sometimes, especially during testing, the site object is not perfectly setup. So the function `find_converter_instance` will throw an error. 
+
+**Default** implementation to find the converter.
+
+```ruby
+converter = site.find_converter_instance(Jekyll::Converters::Scss)
+```
+
+**Workaround** implementation to find the converter.
+
+```ruby
+converter = if defined? site.find_converter_instance
+              site.find_converter_instance(Jekyll::Converters::Scss)
+            else
+              site.getConverterImpl(::Jekyll::Converters::Scss)
+            end
+```
 
 ## Setup Steps
 
