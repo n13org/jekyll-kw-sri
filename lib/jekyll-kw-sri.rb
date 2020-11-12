@@ -10,6 +10,9 @@ module Jekyll
     # jekyll-kw-sri custom tag
     class SriScssHashTag < Jekyll::Tags::IncludeRelativeTag
       # class SriScssHashTag < Liquid::Tag
+
+      alias super_render render
+
       def initialize(tag_name, input, tokens)
         super
 
@@ -19,6 +22,8 @@ module Jekyll
         # File.exists? is file?
 
         @tag_name = tag_name
+
+        # puts syntax_example
       end
 
       # def syntax_example
@@ -41,7 +46,8 @@ module Jekyll
 
           converter = site.find_converter_instance(Jekyll::Converters::Scss)
 
-          result = super(context)
+          # var scss = render(context)
+          result = super_render(context) # super(context)
           scss = result.gsub(/^---.*---/m, '')
           data = converter.convert(scss)
 
