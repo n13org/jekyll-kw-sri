@@ -9,20 +9,12 @@ module Jekyll
   module KargWare
     # jekyll-kw-sri custom tag
     class SriScssHashTag < Jekyll::Tags::IncludeRelativeTag
-      # class SriScssHashTag < Liquid::Tag
-
-      # alias super_render render
-
       def initialize(tag_name, input, tokens)
         super
 
         raise 'Please enter a file path' if input.length <= 0
         # File.exists? is file?
       end
-
-      # def syntax_example
-      #     "{% #{@tag_name} css/main.scss %}"
-      # end
 
       def render(context)
         cache_compiled_scss(@file, context, lambda {
@@ -55,13 +47,6 @@ module Jekyll
       end
 
       def cache_compiled_scss(path, _context, compute)
-        # @@cached_scss ||= {}
-        # if @@cached_scss.key?(path)
-        #   @@cached_scss[path]
-        # else
-        #   @@cached_scss[path] = compute.call
-        # end
-
         @cached_scss ||= {}
         if @cached_scss.key?(path)
           @cached_scss[path]
