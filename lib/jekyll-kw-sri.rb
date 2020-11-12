@@ -32,21 +32,19 @@ module Jekyll
         # @sri_config = context.registers[:site].config['kw-sri'] || {}
 
         cache_compiled_scss(@file, context, lambda {
-          site = context.registers[:site]
+          if context.nil? || context.registers[:site].nil?
+            puts 'WARNING: There was no context, generate default site and context'
+            site = Jekyll::Site.new(Jekyll::Configuration::DEFAULTS)
+            context = Liquid::Context.new({}, {}, { site: site })
+          else
+            site = context.registers[:site]
+          end
 
           converter = site.find_converter_instance(Jekyll::Converters::Scss)
-          # converter = if defined? site.find_converter_instance
-          #               site.find_converter_instance(Jekyll::Converters::Scss)
-          #             else
-          #               site.getConverterImpl(::Jekyll::Converters::Scss)
-          #             end
 
           result = super(context)
           scss = result.gsub(/^---.*---/m, '')
           data = converter.convert(scss)
-
-          ## Debuging
-          # File.open("." + @scss_file + ".tmp", 'w') { |file| file.write(data) }
 
           Integrity::Parser.new(@sri_config).calc_integrity(@scss_file, data)
         })
