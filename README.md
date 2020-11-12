@@ -10,7 +10,7 @@ from [Mozilla docs][Mozilla Subresource Integrity]
 
 ## Configuration
 
-Add `kw-sri` section to `_config.yml` configure the plugin globally.
+Add `kw-sri` section to `_config.yml` configure the plugin globally. If you want to use defauls you can ommit the config-section.
 
 ```yaml
 kw-sri:
@@ -27,17 +27,45 @@ kw-sri:
 | hash_type                | Which kind of integrity hash                      | sha256, **sha384**, sha512 |
 | write_source_mapping_url | Add the map-file like to the css                  | false, **true**            |              
 
-Add `sri: true` to **Front Matter** of  `<page>` or `<post>` to activate the sri plugin.
+## Action Items / Shell commands
 
-## Build gem
-
-## Publish gem
-
-## Run tests
+Run linting and tests
 
 ```sh
+bundle exec rubocop
 bundle exec rake test
 ```
+
+Build gem package
+
+```sh
+bundle exec rake build
+```
+
+Publish gem package
+
+```sh
+bundle exec rake release
+```
+
+Calc a SRI Integrity hash of `./style.css` in format `sha256`
+
+```shell
+openssl dgst -sha256 -binary ./style.css | openssl base64 -A
+```
+
+Calc different **SRI integrity** hash-files from `css-files` (same is valid for `js-files`) in format `sha256`, `sha384` and `sha512` inside a **Makefile**
+
+```plain
+calc-integrity-files:
+	for strength in 256 384 512 ; do \
+		cat ./assets/css/style.min.css | openssl dgst -sha$$strength -binary | openssl base64 -A > ./_includes/integrity/style.min.css.sha$$strength ; \
+		cat ./assets/css/main.css | openssl dgst -sha$$strength -binary | openssl base64 -A > ./_includes/integrity/main.css.sha$$strength ; \
+		cat ./assets/js/script.js | openssl dgst -sha$$strength -binary | openssl base64 -A > ./_includes/integrity/script.js.sha$$strength ; \
+	done
+```
+
+## Notes / Hints
 
 ### Appraisal - Gemfile Generator
 
@@ -49,8 +77,6 @@ bundle exec rake test
 ```sh
 bundle exec appraisal generate
 ```
-
-## Notes / Hints
 
 ### Site context is empty
 
@@ -90,12 +116,6 @@ converter = if defined? site.find_converter_instance
             else
               site.getConverterImpl(::Jekyll::Converters::Scss)
             end
-```
-
-## SRI Integrity
-
-```shell
-openssl dgst -sha256 -binary ./style.css | openssl base64 -A
 ```
 
 ## Setup Steps
