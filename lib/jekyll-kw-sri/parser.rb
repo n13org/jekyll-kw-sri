@@ -19,7 +19,7 @@ module Jekyll
           data_modified = add_source_mapping_url(filename, data)
 
           # Debuging, save rendered css file as tmp file
-          File.open(".#{filename}.tmp", 'w') { |file| file.write(data_modified) } if @configuration.create_tmpfile
+          File.open("#{filename}.tmp", 'w') { |file| file.write(data_modified) } if @configuration.create_tmpfile
 
           case hash_type
           when 'sha256'
