@@ -30,3 +30,4 @@ gem "shoulda", "~> 4.0"
 
 gem "nokogiri", "~> 1.10"
 gem "appraisal", "~>2.3.0"
+gem "jekyll-sass-converter", "~> 2.1"
