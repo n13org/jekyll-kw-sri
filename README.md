@@ -1,5 +1,7 @@
 # jekyll-kw-sri
 
+[![Gem Version](https://badge.fury.io/rb/jekyll-kw-sri.svg)](https://badge.fury.io/rb/jekyll-kw-sri)
+
 A plugin for jekyll to calculate [Subresource Integrity][Wikipedia SRI] (SRI) hashes for CSS (even SCSS and SASS) and JS files during build time.
 
 > **Subresource Integrity** (SRI) is a security feature that enables browsers to verify that resources they fetch (for example, from a CDN) are delivered without unexpected manipulation. It works by allowing you to provide a cryptographic hash that a fetched resource must match.
