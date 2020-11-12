@@ -5,10 +5,19 @@
 /gems/
 
 # tests / test coverage
+.jekyll-cache/
 /coverage
+/test/**/source/.jekyll-cache/
+/test/assets/**/*.sass.tmp
+/test/assets/**/*.scss.tmp
 
 # bundler
 /.bundle/
 /vendor/bundle/
+/gemfiles/.bundle/
+/gemfiles/vendor/bundle/
+
+# rdoc - documenation output folder
+/rdoc/
 
 # Unsorted
