@@ -18,7 +18,6 @@ module Jekyll
 
         raise 'Please enter a file path' if input.length <= 0
 
-        @scss_file = strip_or_self(input)
         # File.exists? is file?
 
         @tag_name = tag_name
@@ -71,15 +70,6 @@ module Jekyll
         else
           @cached_scss[path] = compute.call
         end
-      end
-
-      # https://stackoverflow.com/a/1000975
-      def strip_or_self(str)
-        str.strip! || str
-      end
-
-      def tag_includes_dirs(context)
-        [context.registers[:site].source].freeze
       end
     end
   end
