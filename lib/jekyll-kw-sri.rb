@@ -69,6 +69,11 @@ module Jekyll
           @cached_scss[path] = compute.call
         end
       end
+
+      # Register the sccs file as include folder
+      def tag_includes_dirs(context)
+        [context.registers[:site].source].freeze
+      end
     end
   end
 end
