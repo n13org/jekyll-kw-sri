@@ -51,7 +51,11 @@ module Jekyll
           scss = result.gsub(/^---.*---/m, '')
           data = converter.convert(scss)
 
-          Integrity::Parser.new(@sri_config).calc_integrity(@scss_file, data)
+          file = render_variable(context) || @file
+          validate_file_name(file)
+          path = locate_include_file(context, file, site.safe)
+
+          Integrity::Parser.new(@sri_config).calc_integrity(path, data)
         })
       end
 
