@@ -11,7 +11,7 @@ module Jekyll
     class SriScssHashTag < Jekyll::Tags::IncludeRelativeTag
       # class SriScssHashTag < Liquid::Tag
 
-      alias super_render render
+      # alias super_render render
 
       def initialize(tag_name, input, tokens)
         super
@@ -43,11 +43,12 @@ module Jekyll
 
           converter = site.find_converter_instance(Jekyll::Converters::Scss)
 
-          # var scss = render(context)
-          result = super_render(context) # super(context)
+          # Render the context with the base-class
+          result = super(context) # super_render(context)
           scss = result.gsub(/^---.*---/m, '')
           data = converter.convert(scss)
 
+          # Get path out of the file object
           file = render_variable(context) || @file
           validate_file_name(file)
           path = locate_include_file(context, file, site.safe)
