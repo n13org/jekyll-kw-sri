@@ -31,8 +31,6 @@ module Jekyll
       # end
 
       def render(context)
-        # return '' unless context.registers[:page]['sri']
-
         cache_compiled_scss(@file, context, lambda {
           if context.nil? || context.registers[:site].nil?
             puts 'WARNING: There was no context, generate default site and context'
