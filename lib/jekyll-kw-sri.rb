@@ -7,17 +7,17 @@ require 'jekyll'
 
 module Jekyll
   module KargWare
-    # class SriScssHashTag < Jekyll::Tags::IncludeRelativeTag
-    class SriScssHashTag < Liquid::Tag
+    # jekyll-kw-sri custom tag
+    class SriScssHashTag < Jekyll::Tags::IncludeRelativeTag
+      # class SriScssHashTag < Liquid::Tag
+
+      # alias super_render render
+
       def initialize(tag_name, input, tokens)
         super
 
         raise 'Please enter a file path' if input.length <= 0
-
-        @scss_file = strip_or_self(input)
         # File.exists? is file?
-
-        @tag_name = tag_name
       end
 
       # def syntax_example
@@ -25,29 +25,32 @@ module Jekyll
       # end
 
       def render(context)
-        # return '' unless context.registers[:page]['sri']
-
-        # # Read the global configuration
-        # @sri_config = context.registers[:site].config['kw-sri'] || {}
-
         cache_compiled_scss(@file, context, lambda {
-          site = context.registers[:site]
+          if context.nil? || context.registers[:site].nil?
+            puts 'WARNING: There was no context, generate default site and context'
+            site = Jekyll::Site.new(Jekyll::Configuration::DEFAULTS)
+            context = Liquid::Context.new({}, {}, { site: site })
+          else
+            site = context.registers[:site]
+            # Read the global configuration
+            @sri_config = context.registers[:site].config['kw-sri'] || {}
+          end
 
+          # Render the context with the base-class
           converter = site.find_converter_instance(Jekyll::Converters::Scss)
-          # converter = if defined? site.find_converter_instance
-          #               site.find_converter_instance(Jekyll::Converters::Scss)
-          #             else
-          #               site.getConverterImpl(::Jekyll::Converters::Scss)
-          #             end
-
-          result = super(context)
+          result = super(context) # super_render(context)
           scss = result.gsub(/^---.*---/m, '')
           data = converter.convert(scss)
 
-          ## Debuging
-          # File.open("." + @scss_file + ".tmp", 'w') { |file| file.write(data) }
+          # Get path out of the file object
+          file = render_variable(context) || @file
+          validate_file_name(file)
+          path = locate_include_file(context, file, site.safe)
 
-          Integrity::Parser.new(@sri_config).calc_integrity(@scss_file, data)
+          # Use default config for kw-sri if it is nil
+          @sri_config ||= Jekyll::KargWare::Integrity::Configuration::DEFAULT_CONFIG
+
+          Integrity::Parser.new(@sri_config).calc_integrity(path, data)
         })
       end
 
@@ -67,11 +70,7 @@ module Jekyll
         end
       end
 
-      # https://stackoverflow.com/a/1000975
-      def strip_or_self(str)
-        str.strip! || str
-      end
-
+      # Register the sccs file as include folder
       def tag_includes_dirs(context)
         [context.registers[:site].source].freeze
       end
