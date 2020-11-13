@@ -13,15 +13,17 @@ jobs:
         gemfile:
           - gemfiles/jekyll_3.8.gemfile
           - gemfiles/jekyll_3.9.gemfile
-        include:        
-          - ruby: 2.6
-            gemfile:
-            - gemfiles/jekyll_4.0.gemfile
-            - gemfiles/jekyll_4.1.gemfile
-          - ruby: 2.7
-            gemfile:
-            - gemfiles/jekyll_4.0.gemfile
-            - gemfiles/jekyll_4.1.gemfile
+          - gemfiles/jekyll_4.0.gemfile
+          - gemfiles/jekyll_4.1.gemfile
+        # include:
+        #   - ruby: 2.6
+        #     gemfile:
+        #     - gemfiles/jekyll_4.0.gemfile
+        #     - gemfiles/jekyll_4.1.gemfile  
+        #   - ruby: 2.7
+        #     gemfile:
+        #     - gemfiles/jekyll_4.0.gemfile
+        #     - gemfiles/jekyll_4.1.gemfile
         # exclude:
         # - ruby: 2.4
         #   gemfile: gemfiles/jekyll_4.0.gemfile
