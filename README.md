@@ -35,7 +35,7 @@ Then add the following to your site's `_config.yml` to activate the plugin, see 
 
 ```yaml
 plugins:
-  - jekyll-gist
+  - jekyll-kw-sri
 ```
 
 > The Plug-In is tested with jekyll 3.8, 3.9, 4.0 and 4.1!
