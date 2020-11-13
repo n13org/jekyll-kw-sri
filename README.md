@@ -1,6 +1,7 @@
 # jekyll-kw-sri
 
 ![CI](https://github.com/n13org/jekyll-kw-sri/workflows/CI/badge.svg)
+![Coverage](https://github.com/n13org/jekyll-kw-sri/workflows/Coverage/badge.svg)
 ![RuboCop](https://github.com/n13org/jekyll-kw-sri/workflows/RuboCop/badge.svg)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/a82f10c3cd9fea769a0b/maintainability)](https://codeclimate.com/github/n13org/jekyll-kw-sri/maintainability)
