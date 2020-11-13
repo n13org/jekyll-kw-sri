@@ -5,6 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'version'
 
 # https://medium.com/@paulfarino/wrap-your-assets-in-a-gem-3ad7ecf5b075
+# https://gorails.com/episodes/creating-gems-for-frontend-javascript-libraries
 # https://lokalise.com/blog/create-a-ruby-gem-basics/
 
 Gem::Specification.new do |spec|
@@ -16,6 +17,10 @@ Gem::Specification.new do |spec|
   spec.email         = 'rubygems.org@n13.org'
   spec.homepage      = 'https://github.com/n13org/jekyll-kw-sri'
   spec.license       = 'MIT'
+  spec.metadata      = {
+    'bug_tracker_uri' => 'https://github.com/n13org/jekyll-kw-sri/issues',
+    'source_code_uri' => 'https://github.com/n13org/jekyll-kw-sri/'
+  }
 
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
 
@@ -34,8 +39,4 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 2.4'
 
   spec.add_dependency 'jekyll', '>= 3.8'
-
-  # spec.add_development_dependency "rake", "~> 13.0"
-  # spec.add_development_dependency "minitest", "~> 5.14"
-  # spec.add_development_dependency "appraisal", "~>2.3.0"
 end
