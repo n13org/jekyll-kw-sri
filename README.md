@@ -15,6 +15,31 @@ A plugin for [jekyll][Jekyll Website] to calculate [Subresource Integrity][Wikip
 
 from [Mozilla docs][Mozilla Subresource Integrity]
 
+## Installation
+
+Add this section to your application's Gemfile inside the `jekyll_plugins` and execute `bundle install`
+
+```plain
+group :jekyll_plugins do
+  gem 'jekyll-kw-sri'
+end
+```
+
+Or install the dependency with `bundle` itself, you can use the option `--skip-install`, when `bundle install` will be called later
+
+```sh
+bundle add jekyll-kw-sri --group jekyll_plugins 
+```
+
+Then add the following to your site's `_config.yml` to activate the plugin, see also the [Configuration](#%EF%B8%8F-configuration) section to change the default configuration. 
+
+```yaml
+plugins:
+  - jekyll-gist
+```
+
+> The Plug-In is tested with jekyll 3.8, 3.9, 4.0 and 4.1!
+
 ## 🔥 Usage 
 
 ### Usage for version `>= v0.1.0`
@@ -43,7 +68,7 @@ The markdown syntax shows the include file with all paramters. All parameter can
 
 ### Usage for version `< v0.1.0`
 
-Use the [custom tag][Jekyll Liquid] `sri_scss_hash`. 
+Use the [custom tag][Jekyll Liquid] sri_scss_hash {% raw %}`{% sri_scss_hash style.css %}`{% endraw %}. 
 
 > This approach was inspired by [vcsjones.dev Blog] and [vcsjones.dev GitHub].
 
