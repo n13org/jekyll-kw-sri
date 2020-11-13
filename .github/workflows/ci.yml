@@ -9,28 +9,18 @@ jobs:
         #     - gemfiles/jekyll_4.1.gemfile
       matrix:
         ruby: [2.4, 2.5, 2.6, 2.7]
+        gemfile:
+          - gemfiles/jekyll_3.8.gemfile
+          - gemfiles/jekyll_3.9.gemfile
         include:
-          - ruby: 2.4
-            gemfile:
-            - gemfiles/jekyll_3.8.gemfile
-            - gemfiles/jekyll_3.9.gemfile
-          - ruby: 2.5
-            gemfile:
-            - gemfiles/jekyll_3.8.gemfile
-            - gemfiles/jekyll_3.9.gemfile
           - ruby: 2.6
             gemfile:
-            - gemfiles/jekyll_3.8.gemfile
-            - gemfiles/jekyll_3.9.gemfile
             - gemfiles/jekyll_4.0.gemfile
             - gemfiles/jekyll_4.1.gemfile
           - ruby: 2.7
             gemfile:
-            - gemfiles/jekyll_3.8.gemfile
-            - gemfiles/jekyll_3.9.gemfile
             - gemfiles/jekyll_4.0.gemfile
             - gemfiles/jekyll_4.1.gemfile
-
         # exclude:
         # - ruby: 2.4
         #   gemfile: gemfiles/jekyll_4.0.gemfile
