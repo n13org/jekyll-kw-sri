@@ -1,6 +1,6 @@
 name: CI
 on: [push, pull_request]
-jobs:
+jobs:  
   build:
     strategy:
       # matrix:
@@ -8,11 +8,12 @@ jobs:
         # gemfile:
         #     - gemfiles/jekyll_4.1.gemfile
       matrix:
-        ruby: [2.4, 2.5, 2.6, 2.7]
+        # ruby: [2.4, 2.5, 2.6, 2.7]
+        ruby: [2.6, 2.7]
         gemfile:
           - gemfiles/jekyll_3.8.gemfile
           - gemfiles/jekyll_3.9.gemfile
-        include:
+        include:        
           - ruby: 2.6
             gemfile:
             - gemfiles/jekyll_4.0.gemfile
