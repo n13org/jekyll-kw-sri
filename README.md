@@ -1,5 +1,8 @@
 # jekyll-kw-sri
 
+![CI](https://github.com/n13org/jekyll-kw-sri/workflows/CI/badge.svg)
+![RuboCop](https://github.com/n13org/jekyll-kw-sri/workflows/RuboCop/badge.svg)
+
 [![Gem Version](https://badge.fury.io/rb/jekyll-kw-sri.svg)](https://badge.fury.io/rb/jekyll-kw-sri)
 
 A plugin for [jekyll][Jekyll Website] to calculate [Subresource Integrity][Wikipedia SRI] (SRI) hashes for CSS (even SCSS and SASS) and JS files during build time.
@@ -54,8 +57,8 @@ The result of the html inside the markdown is the `href` and the `integrity`.
 
 ## Changelog
 
-* 0.0.x Add the custom tag `{% sri_scss_hash %}`
 * 0.1.0 Add html include files to use them with  `{% include kw-integrity-css.html %}` or `{% include kw-integrity-js.html %}`
+* 0.0.x Add the custom tag `{% sri_scss_hash %}`
 
 ## ⚙️ Configuration
 
@@ -187,6 +190,7 @@ bundle add shoulda
 * `SRI with Jekyll` [vcsjones.dev Blog] and [vcsjones.dev GitHub]
 * [GitHub Project jekyll/jekyll]
 * [GitHub Project Shopify/liquid]
+* [Medium wrap-your-assets-in-a-gem]
 * `Use jekyll filter scssify` [andreaverlicchi blog scssify]
 * [Blog How to create customizable Liquid tags in Jekyll]
 * [Ruby Module Digest]
@@ -196,10 +200,11 @@ bundle add shoulda
 [Jekyll Includes]: https://jekyllrb.com/docs/includes/
 [Wikipedia SRI]: https://en.wikipedia.org/wiki/Subresource_Integrity
 [Mozilla Subresource Integrity]: https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity
-[vcsjones.dev GitHub]: https://github.com/vcsjones/vcsjones.dev/tree/main
 [vcsjones.dev Blog]: https://vcsjones.dev/2016/11/02/sri-with-jekyll/
+[vcsjones.dev GitHub]: https://github.com/vcsjones/vcsjones.dev/tree/main
 [GitHub Project jekyll/jekyll]: https://github.com/jekyll/jekyll
 [GitHub Project Shopify/liquid]: https://github.com/Shopify/liquid
 [andreaverlicchi blog scssify]: https://www.andreaverlicchi.eu/critical-css-jekyll-sass-github-pages/
 [Ruby Module Digest]: https://ruby-doc.com/stdlib/libdoc/digest/rdoc/Digest.html
 [Blog How to create customizable Liquid tags in Jekyll]: https://blog.sverrirs.com/2016/04/custom-jekyll-tags.html
+[Medium wrap-your-assets-in-a-gem]: https://medium.com/@paulfarino/wrap-your-assets-in-a-gem-3ad7ecf5b075
