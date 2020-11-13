@@ -2,18 +2,62 @@
 
 [![Gem Version](https://badge.fury.io/rb/jekyll-kw-sri.svg)](https://badge.fury.io/rb/jekyll-kw-sri)
 
-A plugin for jekyll to calculate [Subresource Integrity][Wikipedia SRI] (SRI) hashes for CSS (even SCSS and SASS) and JS files during build time.
+A plugin for [jekyll][Jekyll Website] to calculate [Subresource Integrity][Wikipedia SRI] (SRI) hashes for CSS (even SCSS and SASS) and JS files during build time.
 
 > **Subresource Integrity** (SRI) is a security feature that enables browsers to verify that resources they fetch (for example, from a CDN) are delivered without unexpected manipulation. It works by allowing you to provide a cryptographic hash that a fetched resource must match.
 
 from [Mozilla docs][Mozilla Subresource Integrity]
 
+## 🔥 Usage 
+
+### Usage for version `>= v0.1.0`
+
+Use the [Jekyll Includes] `kw-integrity-css.html` for css, scss and sass; and the `kw-integrity-js.html` for js. 
+
+> For static, non-rendered `css` files the hash values have to me calculated and stored in a file. See `Action Items / Shell commands` section about SRI! All the hash-files should be stored in `./_includes/integrity` so they can easy used.
+
+The markdown syntax shows the include file with one paramter "the filename". 
+
+```markdown
+{% include kw-integrity-css.html file='style.scss' %}
+```
+
+The rendered html will use the default path, the css file and the calculated hash.
+
+```html
+<link rel="stylesheet" href="/assets/css/style.css" integrity="sha384-cl6CK1yzEvoM3Sw3dL8YAm/P2VpQiD+mAFVkkb6Bh+23PP1ow2gXXGw4WnQlzO0B" crossorigin="anonymous">
+```
+
+The markdown syntax shows the include file with all paramters. All parameter can be omit. The **default values** are file = "main.scss", path = "assets/css/" and hash = "sha384".
+
+```markdown
+{% include kw-integrity-css.html file='style.scss' path='my/folder/to/css/' hash='sha512' %}
+```
+
+### Usage for version `< v0.1.0`
+
+Use the [custom tag][Jekyll Liquid] `sri_scss_hash`. 
+
+> This approach was inspired by [vcsjones.dev Blog] and [vcsjones.dev GitHub].
+
+The `html` inside the post or page markdown file, shows a usage of a `scss` file which will be compiled to a `css`. The hash of the integrity will be generated during the build time. 
+
+```html
+<link rel="stylesheet" href="{{ '/assets/css/kargware.css' | relative_url }}" integrity="{% sri_scss_hash /assets/css/kargware.scss %}" crossorigin="anonymous">
+```
+
+The result of the html inside the markdown is the `href` and the `integrity`.
+
+```html
+<link rel="stylesheet" href="/assets/css/kargware.css" integrity="sha384-cl6CK1yzEvoM3Sw3dL8YAm/P2VpQiD+mAFVkkb6Bh+23PP1ow2gXXGw4WnQlzO0B" crossorigin="anonymous">
+```
+
 ## Changelog
 
 * 0.0.x Add the custom tag `{% sri_scss_hash %}`
-* 0.1.0 Add html iclude files to use them with  `{% include kw-integrity-css.html %}` or `{% include kw-integrity-js.html %}`
+* 0.1.0 Add html include files to use them with  `{% include kw-integrity-css.html %}` or `{% include kw-integrity-js.html %}`
 
-## Configuration
+## ⚙️ Configuration
 
 Add `kw-sri` section to `_config.yml` configure the plugin globally. If you want to use defauls you can ommit the config-section.
 
@@ -32,7 +76,7 @@ kw-sri:
 | hash_type                | Which kind of integrity hash                      | sha256, **sha384**, sha512 |
 | write_source_mapping_url | Add the map-file like to the css                  | false, **true**            |              
 
-## Action Items / Shell commands
+## 🚀 Action Items / Shell commands
 
 Run linting and tests
 
@@ -70,7 +114,7 @@ calc-integrity-files:
 	done
 ```
 
-## Notes / Hints
+## 📝 Notes / Hints
 
 ### Appraisal - Gemfile Generator
 
@@ -123,7 +167,7 @@ converter = if defined? site.find_converter_instance
             end
 ```
 
-## Setup Steps
+### Setup Steps
 
 ```sh
 bundle init
@@ -138,5 +182,24 @@ bundle add redcarpet
 bundle add shoulda
 ```
 
+## 👋 Big Thanks to my inspiration sources
+
+* `SRI with Jekyll` [vcsjones.dev Blog] and [vcsjones.dev GitHub]
+* [GitHub Project jekyll/jekyll]
+* [GitHub Project Shopify/liquid]
+* `Use jekyll filter scssify` [andreaverlicchi blog scssify]
+* [Blog How to create customizable Liquid tags in Jekyll]
+* [Ruby Module Digest]
+
+[Jekyll Website]: https://jekyllrb.com/
+[Jekyll Liquid]: https://jekyllrb.com/docs/liquid/
+[Jekyll Includes]: https://jekyllrb.com/docs/includes/
 [Wikipedia SRI]: https://en.wikipedia.org/wiki/Subresource_Integrity
 [Mozilla Subresource Integrity]: https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity
+[vcsjones.dev GitHub]: https://github.com/vcsjones/vcsjones.dev/tree/main
+[vcsjones.dev Blog]: https://vcsjones.dev/2016/11/02/sri-with-jekyll/
+[GitHub Project jekyll/jekyll]: https://github.com/jekyll/jekyll
+[GitHub Project Shopify/liquid]: https://github.com/Shopify/liquid
+[andreaverlicchi blog scssify]: https://www.andreaverlicchi.eu/critical-css-jekyll-sass-github-pages/
+[Ruby Module Digest]: https://ruby-doc.com/stdlib/libdoc/digest/rdoc/Digest.html
+[Blog How to create customizable Liquid tags in Jekyll]: https://blog.sverrirs.com/2016/04/custom-jekyll-tags.html
