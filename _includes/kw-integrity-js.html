@@ -1,1 +1,18 @@
-<script src="/assets/js/{{ include.file }}" integrity="sha384-{% include /integrity/{{ include.file }}.sha384 %}" crossorigin="anonymous"></script>
+{% assign para_file = include.file | default: "script.js" %}
+{% assign para_path = include.path | default: "assets/js/" %}
+{% assign para_hash = include.hash | default: "sha384" %}
+
+{% assign target_file = para_path | append: para_file %}
+{% assign integrity_file = "/integrity/" | append: para_file | append: "." | append: para_hash %}
+
+{% comment %}{% raw %}
+<!-- DEBUG BEGINN
+{{ para_file }}
+{{ para_path }}
+{{ para_hash }}
+{{ target_file }}
+{{ integrity_file }}
+DEBUG END -->
+{% endraw %}{% endcomment %}
+
+<script src="{{ target_file }}" integrity="{{ para_hash }}-{% include {{ integrity_file }} %}" crossorigin="anonymous"></script>
