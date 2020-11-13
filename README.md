@@ -3,6 +3,9 @@
 ![CI](https://github.com/n13org/jekyll-kw-sri/workflows/CI/badge.svg)
 ![RuboCop](https://github.com/n13org/jekyll-kw-sri/workflows/RuboCop/badge.svg)
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/a82f10c3cd9fea769a0b/maintainability)](https://codeclimate.com/github/n13org/jekyll-kw-sri/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/a82f10c3cd9fea769a0b/test_coverage)](https://codeclimate.com/github/n13org/jekyll-kw-sri/test_coverage)
+
 [![Gem Version](https://badge.fury.io/rb/jekyll-kw-sri.svg)](https://badge.fury.io/rb/jekyll-kw-sri)
 
 A plugin for [jekyll][Jekyll Website] to calculate [Subresource Integrity][Wikipedia SRI] (SRI) hashes for CSS (even SCSS and SASS) and JS files during build time.
