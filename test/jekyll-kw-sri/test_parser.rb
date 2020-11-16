@@ -15,17 +15,17 @@ module Jekyll
         def test_default_parser
           parser = Jekyll::KargWare::Integrity::Parser.new
 
-          assert_equal parser.configuration.hash_type, 'sha384'
-          assert_equal parser.configuration.write_source_mapping_url, true
-          assert_equal parser.configuration.create_tmpfile, false
+          assert_equal 'sha384', parser.configuration.hash_type
+          assert_equal true, parser.configuration.write_source_mapping_url
+          assert_equal false, parser.configuration.create_tmpfile
         end
 
         def test_parser_with_sha256
           parser = Jekyll::KargWare::Integrity::Parser.new('hashType' => 'sha256')
 
-          assert_equal parser.configuration.hash_type, 'sha256'
-          assert_equal parser.configuration.write_source_mapping_url, true
-          assert_equal parser.configuration.create_tmpfile, false
+          assert_equal 'sha256', parser.configuration.hash_type
+          assert_equal true, parser.configuration.write_source_mapping_url
+          assert_equal false, parser.configuration.create_tmpfile
         end
 
         def test_add_source_mapping_url_default
