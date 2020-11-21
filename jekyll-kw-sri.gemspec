@@ -12,7 +12,10 @@ Gem::Specification.new do |spec|
   spec.name          = 'jekyll-kw-sri'
   spec.version       = JekyllKwSri::VERSION
   spec.summary       = 'Jekyll CSS/JS integrity hash plugin'
-  spec.description   = 'Jekyll plugin which calculate the integrity hash of CSS (SCSS, SASS) and JS.'
+  spec.description   = <<-LONGDESCRIPTION
+    Jekyll plugin which calculate the integrity hash of CSS (SCSS, SASS) and JS files.
+    The crossorigin will set to anonymous. The plugin uses Jekyll Filter, Tags and customen converters.
+  LONGDESCRIPTION
   spec.authors       = ['Nicolas Karg', 'n13.org - Open-Source by KargWare']
   spec.email         = 'rubygems.org@n13.org'
   spec.homepage      = 'https://github.com/n13org/jekyll-kw-sri'

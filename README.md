@@ -17,7 +17,7 @@ from [Mozilla docs][Mozilla Subresource Integrity]
 
 ## Installation
 
-Add this section to your application's Gemfile inside the `jekyll_plugins` and execute `bundle install`
+Add this section to your application's `Gemfile` inside the `jekyll_plugins` and execute `bundle install`
 
 ```plain
 group :jekyll_plugins do
