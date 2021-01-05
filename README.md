@@ -19,7 +19,7 @@ from [Mozilla docs][Mozilla Subresource Integrity]
 
 Add this section to your application's `Gemfile` inside the `jekyll_plugins` and execute `bundle install`
 
-```plain
+```ruby
 group :jekyll_plugins do
   gem 'jekyll-kw-sri'
 end
