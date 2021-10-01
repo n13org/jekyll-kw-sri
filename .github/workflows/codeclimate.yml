@@ -35,7 +35,7 @@ jobs:
         run: |
           gem install bundler
           bundle install --jobs 4 --retry 3
-      - uses: paambaati/codeclimate-action@v2.7.4
+      - uses: paambaati/codeclimate-action@v3.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_REPORTER_ID }}
         with:
