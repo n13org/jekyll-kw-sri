@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     name: coverage
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Ruby ${{ matrix.ruby }}
         uses: actions/setup-ruby@v1
         with:
