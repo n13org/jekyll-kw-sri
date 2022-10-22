@@ -46,9 +46,9 @@ plugins:
 
 Use the [Jekyll Includes] `kw-integrity-css.html` for css, scss and sass; and the `kw-integrity-js.html` for js. 
 
-> For static, non-rendered `css` files the hash values have to me calculated and stored in a file. See `Action Items / Shell commands` section about SRI! All the hash-files should be stored in `./_includes/integrity` so they can easy used.
+> For static, non-rendered `css` files the hash values have to be calculated and stored in a file. See `Action Items / Shell commands` section about SRI! All the hash-files should be stored in `./_includes/integrity` so they can easy used.
 
-The markdown syntax shows the include file with one paramter "the filename". 
+The markdown syntax shows the include file with one parameter "the filename". 
 
 ```markdown
 {% include kw-integrity-css.html file='style.scss' %}
